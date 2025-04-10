@@ -1,0 +1,101 @@
+id,name,category,price,dosage,description,manufacturer,stock
+1,Drug1,Antibiotic,10.75,200mg,Description for Drug1,Sun Pharma,510
+2,Drug2,Antidiabetic,11.5,300mg,Description for Drug2,Dr. Reddy's,520
+3,Drug3,Respiratory,12.25,400mg,Description for Drug3,Zydus,530
+4,Drug4,Psychiatric,13.0,500mg,Description for Drug4,Lupin,540
+5,Drug5,Gastrointestinal,13.75,100mg,Description for Drug5,Torrent,550
+6,Drug6,Pain Management,14.5,200mg,Description for Drug6,Abbott,560
+7,Drug7,Hormonal,15.25,300mg,Description for Drug7,GSK,570
+8,Drug8,Dermatological,16.0,400mg,Description for Drug8,Pfizer,580
+9,Drug9,Ophthalmic,16.75,500mg,Description for Drug9,Sanofi,590
+10,Drug10,Cardiovascular,17.5,100mg,Description for Drug10,Cipla,600
+11,Drug11,Antibiotic,18.25,200mg,Description for Drug11,Sun Pharma,610
+12,Drug12,Antidiabetic,19.0,300mg,Description for Drug12,Dr. Reddy's,620
+13,Drug13,Respiratory,19.75,400mg,Description for Drug13,Zydus,630
+14,Drug14,Psychiatric,20.5,500mg,Description for Drug14,Lupin,640
+15,Drug15,Gastrointestinal,21.25,100mg,Description for Drug15,Torrent,650
+16,Drug16,Pain Management,22.0,200mg,Description for Drug16,Abbott,660
+17,Drug17,Hormonal,22.75,300mg,Description for Drug17,GSK,670
+18,Drug18,Dermatological,23.5,400mg,Description for Drug18,Pfizer,680
+19,Drug19,Ophthalmic,24.25,500mg,Description for Drug19,Sanofi,690
+20,Drug20,Cardiovascular,25.0,100mg,Description for Drug20,Cipla,700
+21,Drug21,Antibiotic,25.75,200mg,Description for Drug21,Sun Pharma,710
+22,Drug22,Antidiabetic,26.5,300mg,Description for Drug22,Dr. Reddy's,720
+23,Drug23,Respiratory,27.25,400mg,Description for Drug23,Zydus,730
+24,Drug24,Psychiatric,28.0,500mg,Description for Drug24,Lupin,740
+25,Drug25,Gastrointestinal,28.75,100mg,Description for Drug25,Torrent,750
+26,Drug26,Pain Management,29.5,200mg,Description for Drug26,Abbott,760
+27,Drug27,Hormonal,30.25,300mg,Description for Drug27,GSK,770
+28,Drug28,Dermatological,31.0,400mg,Description for Drug28,Pfizer,780
+29,Drug29,Ophthalmic,31.75,500mg,Description for Drug29,Sanofi,790
+30,Drug30,Cardiovascular,32.5,100mg,Description for Drug30,Cipla,800
+31,Drug31,Antibiotic,33.25,200mg,Description for Drug31,Sun Pharma,810
+32,Drug32,Antidiabetic,34.0,300mg,Description for Drug32,Dr. Reddy's,820
+33,Drug33,Respiratory,34.75,400mg,Description for Drug33,Zydus,830
+34,Drug34,Psychiatric,35.5,500mg,Description for Drug34,Lupin,840
+35,Drug35,Gastrointestinal,36.25,100mg,Description for Drug35,Torrent,850
+36,Drug36,Pain Management,37.0,200mg,Description for Drug36,Abbott,860
+37,Drug37,Hormonal,37.75,300mg,Description for Drug37,GSK,870
+38,Drug38,Dermatological,38.5,400mg,Description for Drug38,Pfizer,880
+39,Drug39,Ophthalmic,39.25,500mg,Description for Drug39,Sanofi,890
+40,Drug40,Cardiovascular,40.0,100mg,Description for Drug40,Cipla,900
+41,Drug41,Antibiotic,40.75,200mg,Description for Drug41,Sun Pharma,910
+42,Drug42,Antidiabetic,41.5,300mg,Description for Drug42,Dr. Reddy's,920
+43,Drug43,Respiratory,42.25,400mg,Description for Drug43,Zydus,930
+44,Drug44,Psychiatric,43.0,500mg,Description for Drug44,Lupin,940
+45,Drug45,Gastrointestinal,43.75,100mg,Description for Drug45,Torrent,950
+46,Drug46,Pain Management,44.5,200mg,Description for Drug46,Abbott,960
+47,Drug47,Hormonal,45.25,300mg,Description for Drug47,GSK,970
+48,Drug48,Dermatological,46.0,400mg,Description for Drug48,Pfizer,980
+49,Drug49,Ophthalmic,46.75,500mg,Description for Drug49,Sanofi,990
+50,Drug50,Cardiovascular,47.5,100mg,Description for Drug50,Cipla,500
+51,Drug51,Antibiotic,48.25,200mg,Description for Drug51,Sun Pharma,510
+52,Drug52,Antidiabetic,49.0,300mg,Description for Drug52,Dr. Reddy's,520
+53,Drug53,Respiratory,49.75,400mg,Description for Drug53,Zydus,530
+54,Drug54,Psychiatric,50.5,500mg,Description for Drug54,Lupin,540
+55,Drug55,Gastrointestinal,51.25,100mg,Description for Drug55,Torrent,550
+56,Drug56,Pain Management,52.0,200mg,Description for Drug56,Abbott,560
+57,Drug57,Hormonal,52.75,300mg,Description for Drug57,GSK,570
+58,Drug58,Dermatological,53.5,400mg,Description for Drug58,Pfizer,580
+59,Drug59,Ophthalmic,54.25,500mg,Description for Drug59,Sanofi,590
+60,Drug60,Cardiovascular,55.0,100mg,Description for Drug60,Cipla,600
+61,Drug61,Antibiotic,55.75,200mg,Description for Drug61,Sun Pharma,610
+62,Drug62,Antidiabetic,56.5,300mg,Description for Drug62,Dr. Reddy's,620
+63,Drug63,Respiratory,57.25,400mg,Description for Drug63,Zydus,630
+64,Drug64,Psychiatric,58.0,500mg,Description for Drug64,Lupin,640
+65,Drug65,Gastrointestinal,58.75,100mg,Description for Drug65,Torrent,650
+66,Drug66,Pain Management,59.5,200mg,Description for Drug66,Abbott,660
+67,Drug67,Hormonal,60.25,300mg,Description for Drug67,GSK,670
+68,Drug68,Dermatological,61.0,400mg,Description for Drug68,Pfizer,680
+69,Drug69,Ophthalmic,61.75,500mg,Description for Drug69,Sanofi,690
+70,Drug70,Cardiovascular,62.5,100mg,Description for Drug70,Cipla,700
+71,Drug71,Antibiotic,63.25,200mg,Description for Drug71,Sun Pharma,710
+72,Drug72,Antidiabetic,64.0,300mg,Description for Drug72,Dr. Reddy's,720
+73,Drug73,Respiratory,64.75,400mg,Description for Drug73,Zydus,730
+74,Drug74,Psychiatric,65.5,500mg,Description for Drug74,Lupin,740
+75,Drug75,Gastrointestinal,66.25,100mg,Description for Drug75,Torrent,750
+76,Drug76,Pain Management,67.0,200mg,Description for Drug76,Abbott,760
+77,Drug77,Hormonal,67.75,300mg,Description for Drug77,GSK,770
+78,Drug78,Dermatological,68.5,400mg,Description for Drug78,Pfizer,780
+79,Drug79,Ophthalmic,69.25,500mg,Description for Drug79,Sanofi,790
+80,Drug80,Cardiovascular,70.0,100mg,Description for Drug80,Cipla,800
+81,Drug81,Antibiotic,70.75,200mg,Description for Drug81,Sun Pharma,810
+82,Drug82,Antidiabetic,71.5,300mg,Description for Drug82,Dr. Reddy's,820
+83,Drug83,Respiratory,72.25,400mg,Description for Drug83,Zydus,830
+84,Drug84,Psychiatric,73.0,500mg,Description for Drug84,Lupin,840
+85,Drug85,Gastrointestinal,73.75,100mg,Description for Drug85,Torrent,850
+86,Drug86,Pain Management,74.5,200mg,Description for Drug86,Abbott,860
+87,Drug87,Hormonal,75.25,300mg,Description for Drug87,GSK,870
+88,Drug88,Dermatological,76.0,400mg,Description for Drug88,Pfizer,880
+89,Drug89,Ophthalmic,76.75,500mg,Description for Drug89,Sanofi,890
+90,Drug90,Cardiovascular,77.5,100mg,Description for Drug90,Cipla,900
+91,Drug91,Antibiotic,78.25,200mg,Description for Drug91,Sun Pharma,910
+92,Drug92,Antidiabetic,79.0,300mg,Description for Drug92,Dr. Reddy's,920
+93,Drug93,Respiratory,79.75,400mg,Description for Drug93,Zydus,930
+94,Drug94,Psychiatric,80.5,500mg,Description for Drug94,Lupin,940
+95,Drug95,Gastrointestinal,81.25,100mg,Description for Drug95,Torrent,950
+96,Drug96,Pain Management,82.0,200mg,Description for Drug96,Abbott,960
+97,Drug97,Hormonal,82.75,300mg,Description for Drug97,GSK,970
+98,Drug98,Dermatological,83.5,400mg,Description for Drug98,Pfizer,980
+99,Drug99,Ophthalmic,84.25,500mg,Description for Drug99,Sanofi,990
+100,Drug100,Cardiovascular,85.0,100mg,Description for Drug100,Cipla,500

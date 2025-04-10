@@ -1,0 +1,739 @@
+# pharmacy_data_app.py - Advanced Pharmacy Data Science App with ML Models
+# Author: Data Science Professional
+# Last Updated: April 2025
+
+import streamlit as st
+import pandas as pd
+import numpy as np
+import requests
+import time
+import matplotlib.pyplot as plt
+import seaborn as sns
+from statsmodels.tsa.arima.model import ARIMA
+import networkx as nx
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+from datetime import datetime
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+from sklearn.pipeline import Pipeline
+from pymongo import MongoClient
+import sqlite3
+import joblib
+import os
+import unittest
+import pytest
+import json
+import logging
+
+# Set up logging
+logging.basicConfig(level=logging.INFO, 
+                   format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
+
+# App configuration
+st.set_page_config(layout="wide", page_title="Pharmacy Data Science Platform")
+
+# Check for model directory
+MODEL_DIR = "models"
+if not os.path.exists(MODEL_DIR):
+    os.makedirs(MODEL_DIR)
+
+# Database configuration
+DB_PATH = "pharmacy_data.db"
+
+def create_sqlite_db():
+    """Create SQLite database with sample tables if it doesn't exist"""
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+    
+    # Create drugs table
+    cursor.execute('''
+    CREATE TABLE IF NOT EXISTS drugs (
+        id INTEGER PRIMARY KEY,
+        name TEXT NOT NULL,
+        category TEXT,
+        price REAL,
+        dosage TEXT,
+        description TEXT,
+        manufacturer TEXT,
+        stock INTEGER
+    )
+    ''')
+    
+    # Create sales table
+    cursor.execute('''
+    CREATE TABLE IF NOT EXISTS sales (
+        id INTEGER PRIMARY KEY,
+        drug_id INTEGER,
+        sale_date TEXT,
+        quantity INTEGER,
+        total_price REAL,
+        FOREIGN KEY (drug_id) REFERENCES drugs (id)
+    )
+    ''')
+    
+    # Add sample data if the table is empty
+    cursor.execute("SELECT COUNT(*) FROM drugs")
+    if cursor.fetchone()[0] == 0:
+        # Add sample drugs
+        sample_drugs = [
+            (1, "Atorvastatin", "Cardiovascular", 45.50, "20mg", "Cholesterol-lowering medication", "Pfizer", 500),
+            (2, "Metformin", "Antidiabetic", 32.75, "500mg", "Oral diabetes medicine", "Merck", 750),
+            (3, "Lisinopril", "Cardiovascular", 28.99, "10mg", "ACE inhibitor", "AstraZeneca", 600),
+            (4, "Levothyroxine", "Thyroid", 22.50, "50mcg", "Thyroid hormone", "Abbott", 800),
+            (5, "Amoxicillin", "Antibiotic", 15.25, "500mg", "Penicillin antibiotic", "GSK", 950),
+            (6, "Azithromycin", "Antibiotic", 42.30, "250mg", "Macrolide antibiotic", "Pfizer", 450),
+            (7, "Albuterol", "Respiratory", 55.80, "90mcg", "Bronchodilator", "GSK", 350),
+            (8, "Omeprazole", "Gastrointestinal", 38.45, "20mg", "Proton pump inhibitor", "AstraZeneca", 600),
+            (9, "Amlodipine", "Cardiovascular", 26.70, "5mg", "Calcium channel blocker", "Pfizer", 700),
+            (10, "Sertraline", "Psychiatric", 65.30, "50mg", "Antidepressant", "Pfizer", 400)
+        ]
+        cursor.executemany("INSERT INTO drugs VALUES (?, ?, ?, ?, ?, ?, ?, ?)", sample_drugs)
+        
+        # Add sample sales data
+        import random
+        from datetime import datetime, timedelta
+        
+        sample_sales = []
+        sale_id = 1
+        # Generate 365 days of sales data
+        for day in range(365):
+            date = (datetime.now() - timedelta(days=365-day)).strftime('%Y-%m-%d')
+            # Each drug has some sales on each day
+            for drug_id in range(1, 11):
+                # Add some randomness to quantities - higher on weekends
+                is_weekend = (datetime.strptime(date, '%Y-%m-%d').weekday() >= 5)
+                base_quantity = random.randint(3, 8) if is_weekend else random.randint(1, 5)
+                # Add seasonality - more sales in winter for certain drugs
+                month = datetime.strptime(date, '%Y-%m-%d').month
+                is_winter = (month in [12, 1, 2])
+                
+                # Respiratory and antibiotic meds sell more in winter
+                if (drug_id in [5, 6, 7]) and is_winter:
+                    quantity = base_quantity * 2
+                else:
+                    quantity = base_quantity
+                    
+                # Get the price from the drugs table
+                cursor.execute("SELECT price FROM drugs WHERE id = ?", (drug_id,))
+                price = cursor.fetchone()[0]
+                total = price * quantity
+                
+                sample_sales.append((sale_id, drug_id, date, quantity, total))
+                sale_id += 1
+        
+        cursor.executemany("INSERT INTO sales VALUES (?, ?, ?, ?, ?)", sample_sales)
+    
+    conn.commit()
+    conn.close()
+    logger.info("SQLite database initialized with sample data")
+
+# Create and populate the SQLite database
+create_sqlite_db()
+
+# Title and description
+st.title("💊 Advanced Pharmacy Data Science Platform")
+
+st.markdown("""
+This professional analytics platform demonstrates data science expertise in pharmaceutical domain with:
+- **Machine Learning**: Drug price prediction models and shortage forecasting
+- **Natural Language Processing**: Medical text analysis and recommendation engine
+- **Network Analysis**: Gene-drug interaction visualization with centrality metrics
+- **Time Series Analysis**: Sales forecasting with ARIMA and seasonal decomposition
+- **Database Integration**: MongoDB and SQLite with real-time querying
+- **Unit Testing**: Comprehensive test suite for data integrity and model validation
+- **Documentation**: Detailed usage guides, API references, and methodologies
+""")
+
+# --- Sidebar Menu ---
+menu = st.sidebar.radio("Select Module", [
+    "Dashboard",
+    "Gene–Drug Analysis",
+    "Sales Forecast",
+    "Drug Price ML Model",
+    "Drug Shortage Prediction",
+    "Medicine Recommendation",
+    "Gene Interaction Network",
+    "Product Catalog",
+    "SQLite Database Explorer",
+    "MongoDB Integration",
+    "Documentation"
+])
+
+# --- Dashboard Overview ---
+if menu == "Dashboard":
+    st.subheader("📊 Pharmacy Analytics Dashboard")
+    
+    # Connect to the SQLite database
+    conn = sqlite3.connect(DB_PATH)
+    
+    # Create dashboard metrics
+    col1, col2, col3, col4 = st.columns(4)
+    
+    with col1:
+        # Total drugs
+        total_drugs = pd.read_sql("SELECT COUNT(*) as count FROM drugs", conn).iloc[0,0]
+        st.metric("Total Products", total_drugs)
+        
+    with col2:
+        # Total sales
+        total_sales = pd.read_sql("SELECT SUM(total_price) as total FROM sales", conn).iloc[0,0]
+        st.metric("Total Sales", f"₹{total_sales:,.2f}")
+        
+    with col3:
+        # Most popular drug
+        popular_drug = pd.read_sql("""
+            SELECT d.name, SUM(s.quantity) as total_sold 
+            FROM sales s JOIN drugs d ON s.drug_id = d.id 
+            GROUP BY d.name ORDER BY total_sold DESC LIMIT 1
+        """, conn)
+        st.metric("Most Popular Drug", popular_drug.iloc[0,0])
+        
+    with col4:
+        # Low stock warning
+        low_stock = pd.read_sql("SELECT COUNT(*) as count FROM drugs WHERE stock < 400", conn).iloc[0,0]
+        st.metric("Low Stock Items", low_stock)
+    
+    # Sales trends
+    st.subheader("Sales Trends")
+    sales_data = pd.read_sql("""
+        SELECT date(sale_date) as date, SUM(total_price) as daily_sales
+        FROM sales
+        GROUP BY date
+        ORDER BY date
+    """, conn)
+    
+    sales_data['date'] = pd.to_datetime(sales_data['date'])
+    sales_data = sales_data.set_index('date')
+    
+    # Weekly moving average
+    sales_data['7day_avg'] = sales_data['daily_sales'].rolling(window=7).mean()
+    
+    fig, ax = plt.subplots(figsize=(10, 6))
+    ax.plot(sales_data.index, sales_data['daily_sales'], 'b-', alpha=0.5, label='Daily Sales')
+    ax.plot(sales_data.index, sales_data['7day_avg'], 'r-', label='7-Day Average')
+    ax.set_xlabel('Date')
+    ax.set_ylabel('Sales (₹)')
+    ax.set_title('Daily Sales with 7-Day Moving Average')
+    ax.legend()
+    st.pyplot(fig)
+    
+    # Top 5 selling drugs
+    st.subheader("Top Selling Products")
+    top_drugs = pd.read_sql("""
+        SELECT d.name, SUM(s.quantity) as total_sold, SUM(s.total_price) as total_revenue
+        FROM sales s JOIN drugs d ON s.drug_id = d.id
+        GROUP BY d.name
+        ORDER BY total_revenue DESC
+        LIMIT 5
+    """, conn)
+    
+    fig, ax = plt.subplots(figsize=(10, 6))
+    bars = ax.bar(top_drugs['name'], top_drugs['total_revenue'])
+    ax.set_xlabel('Drug Name')
+    ax.set_ylabel('Revenue (₹)')
+    ax.set_title('Top 5 Revenue-Generating Drugs')
+    
+    # Add data labels on bars
+    for bar in bars:
+        height = bar.get_height()
+        ax.text(bar.get_x() + bar.get_width()/2., height + 5000,
+                f'₹{height:,.0f}', ha='center', va='bottom', rotation=0)
+    
+    st.pyplot(fig)
+    
+    # Sales by category
+    st.subheader("Sales by Category")
+    category_sales = pd.read_sql("""
+        SELECT d.category, SUM(s.total_price) as category_sales
+        FROM sales s JOIN drugs d ON s.drug_id = d.id
+        GROUP BY d.category
+        ORDER BY category_sales DESC
+    """, conn)
+    
+    fig, ax = plt.subplots(figsize=(10, 6))
+    ax.pie(category_sales['category_sales'], labels=category_sales['category'], autopct='%1.1f%%', 
+           startangle=90, shadow=True)
+    ax.axis('equal')
+    ax.set_title('Sales Distribution by Drug Category')
+    st.pyplot(fig)
+    
+    conn.close()
+
+# --- PharmGKB Gene–Drug Analysis ---
+def fetch_gene_data(gene_ids):
+    """Fetch gene-drug interaction data from PharmGKB API"""
+    gene_drug_data = []
+    for gene_id in gene_ids:
+        try:
+            # API endpoint for PharmGKB
+            url = f"https://api.pharmgkb.org/v1/data/gene/{gene_id}"
+            response = requests.get(url)
+            if response.status_code == 200:
+                data = response.json()
+                gene_name = data.get('name', 'Unknown')
+                related_drugs = data.get('relatedChemicals', [])
+                for drug in related_drugs:
+                    gene_drug_data.append({
+                        "Gene": gene_name, 
+                        "Gene ID": gene_id,
+                        "Drug": drug.get('name', 'Unknown Drug'),
+                        "Relation": drug.get('relation', 'Unknown')
+                    })
+            else:
+                st.warning(f"Could not fetch data for gene {gene_id}. Status code: {response.status_code}")
+            # Respect API rate limits
+            time.sleep(0.5)
+        except Exception as e:
+            logger.error(f"Error fetching data for gene {gene_id}: {e}")
+            st.error(f"Error fetching data for gene {gene_id}: {str(e)}")
+    return pd.DataFrame(gene_drug_data)
+
+if menu == "Gene–Drug Analysis":
+    st.subheader("🧬 PharmGKB Gene–Drug Interaction Analysis")
+    
+    st.info("""
+    This module analyzes gene-drug interactions using the PharmGKB API. You can:
+    1. Upload a CSV file containing gene IDs and drug names
+    2. Enter PharmGKB gene IDs directly
+    3. Visualize gene-drug interaction networks
+    """)
+    
+    tab1, tab2 = st.tabs(["Data Input", "Network Analysis"])
+    
+    with tab1:
+        uploaded_file = st.file_uploader("Upload CSV with Gene IDs:", type=["csv"])
+        gene_ids_input = st.text_area("Or Enter PharmGKB Gene IDs (comma separated):", "PA124,PA128,PA130,PA131,PA134,PA151")
+        
+        if uploaded_file is not None:
+            try:
+                df = pd.read_csv(uploaded_file)
+                st.success("CSV Uploaded Successfully")
+                
+                # Determine if we have a column of gene IDs or a more complex format
+                if 'Gene ID' in df.columns:
+                    gene_id_list = df['Gene ID'].unique().tolist()
+                    st.info(f"Found {len(gene_id_list)} unique gene IDs in the CSV file")
+                    
+                    if st.button("Fetch Gene Data from CSV"):
+                        gene_data = fetch_gene_data(gene_id_list)
+                        if not gene_data.empty:
+                            st.dataframe(gene_data)
+                            st.session_state.gene_data = gene_data
+                else:
+                    st.warning("The CSV file must contain a 'Gene ID' column")
+            except Exception as e:
+                st.error(f"Error reading CSV: {str(e)}")
+        
+        elif st.button("Fetch Gene–Drug Data"):
+            gene_id_list = [gid.strip() for gid in gene_ids_input.split(",")]
+            with st.spinner("Fetching gene-drug interaction data..."):
+                gene_data = fetch_gene_data(gene_id_list)
+                if not gene_data.empty:
+                    st.dataframe(gene_data)
+                    st.session_state.gene_data = gene_data
+                    
+                    # Create gene-drug frequency chart
+                    fig, ax = plt.subplots(figsize=(10, 6))
+                    gene_counts = gene_data['Gene'].value_counts()
+                    gene_counts.plot(kind='bar', ax=ax)
+                    ax.set_title('Number of Drug Interactions by Gene')
+                    ax.set_xlabel('Gene')
+                    ax.set_ylabel('Number of Interactions')
+                    st.pyplot(fig)
+                else:
+                    st.warning("No data found for the provided gene IDs")
+    
+    with tab2:
+        st.subheader("Gene-Drug Interaction Network")
+        
+        if 'gene_data' in st.session_state and not st.session_state.gene_data.empty:
+            df = st.session_state.gene_data
+            
+            # Create network graph
+            G = nx.Graph()
+            
+            # Add gene nodes
+            genes = df['Gene'].unique()
+            for gene in genes:
+                G.add_node(gene, type='gene')
+            
+            # Add drug nodes
+            drugs = df['Drug'].unique()
+            for drug in drugs:
+                G.add_node(drug, type='drug')
+            
+            # Add edges for interactions
+            for _, row in df.iterrows():
+                G.add_edge(row['Gene'], row['Drug'])
+            
+            # Calculate network metrics
+            gene_centrality = nx.degree_centrality(G)
+            betweenness = nx.betweenness_centrality(G)
+            
+            # Create a more sophisticated visualization
+            fig, ax = plt.subplots(figsize=(12, 10))
+            
+            # Position nodes using force-directed layout
+            pos = nx.spring_layout(G, seed=42)
+            
+            # Draw gene nodes
+            gene_nodes = [n for n, d in G.nodes(data=True) if n in genes]
+            nx.draw_networkx_nodes(G, pos, nodelist=gene_nodes, node_size=800, 
+                                  node_color='lightblue', alpha=0.8, label='Genes')
+            
+            # Draw drug nodes
+            drug_nodes = [n for n, d in G.nodes(data=True) if n in drugs]
+            nx.draw_networkx_nodes(G, pos, nodelist=drug_nodes, node_size=400,
+                                  node_color='lightgreen', alpha=0.6, label='Drugs')
+            
+            # Draw edges
+            nx.draw_networkx_edges(G, pos, width=1.0, alpha=0.5)
+            
+            # Draw labels with adjusted font size
+            gene_labels = {n: n for n in gene_nodes}
+            drug_labels = {n: n for n in drug_nodes}
+            nx.draw_networkx_labels(G, pos, labels=gene_labels, font_size=12, font_weight='bold')
+            nx.draw_networkx_labels(G, pos, labels=drug_labels, font_size=8)
+            
+            plt.title("Gene-Drug Interaction Network", fontsize=16)
+            plt.legend(scatterpoints=1)
+            plt.axis('off')
+            
+            st.pyplot(fig)
+            
+            # Display network metrics
+            st.subheader("Network Centrality Analysis")
+            
+            col1, col2 = st.columns(2)
+            
+            with col1:
+                st.subheader("Degree Centrality (Top 5)")
+                centrality_df = pd.DataFrame({
+                    'Node': list(gene_centrality.keys()),
+                    'Centrality': list(gene_centrality.values())
+                }).sort_values('Centrality', ascending=False).head(5)
+                st.dataframe(centrality_df)
+                
+                # Interpretation
+                st.markdown(f"""
+                **Key Insight**: {centrality_df.iloc[0]['Node']} is the most connected gene, 
+                interacting with {int(centrality_df.iloc[0]['Centrality'] * (len(G.nodes) - 1))} drugs.
+                This suggests it may be a hub gene involved in multiple drug responses.
+                """)
+            
+            with col2:
+                st.subheader("Betweenness Centrality (Top 5)")
+                betweenness_df = pd.DataFrame({
+                    'Node': list(betweenness.keys()),
+                    'Betweenness': list(betweenness.values())
+                }).sort_values('Betweenness', ascending=False).head(5)
+                st.dataframe(betweenness_df)
+                
+                # Interpretation
+                st.markdown(f"""
+                **Key Insight**: {betweenness_df.iloc[0]['Node']} has the highest betweenness centrality,
+                suggesting it may act as a bridge between different drug interaction pathways.
+                This gene/drug could be particularly important in multi-drug treatments.
+                """)
+        else:
+            st.info("Please fetch gene-drug data first in the 'Data Input' tab")
+
+# --- Sales Forecasting with ARIMA ---
+def forecast_sales(df, steps, order=(5,1,0)):
+    """
+    Forecast future sales using ARIMA model
+    
+    Parameters:
+    -----------
+    df : DataFrame
+        DataFrame containing 'Date' and 'Sales' columns
+    steps : int
+        Number of steps to forecast
+    order : tuple
+        ARIMA model order (p,d,q)
+        
+    Returns:
+    --------
+    ts : Series
+        Original time series
+    forecast : Series
+        Forecasted values
+    conf_int : array
+        Confidence intervals for forecast
+    """
+    try:
+        # Validate input data
+        if 'Date' not in df.columns or 'Sales' not in df.columns:
+            st.error("CSV must contain 'Date' and 'Sales' columns")
+            return None, None, None
+            
+        df['Date'] = pd.to_datetime(df['Date'])
+        df.set_index('Date', inplace=True)
+        ts = df['Sales']
+        
+        # Check for enough data points
+        if len(ts) < 10:
+            st.warning("Not enough data points for reliable forecasting. Need at least 10 data points.")
+            return ts, None, None
+            
+        # Fit ARIMA model
+        model = ARIMA(ts, order=order)
+        model_fit = model.fit()
+        
+        # Generate forecast with confidence intervals
+        forecast_results = model_fit.get_forecast(steps=steps)
+        forecast = forecast_results.predicted_mean
+        conf_int = forecast_results.conf_int()
+        
+        return ts, forecast, conf_int
+    except Exception as e:
+        logger.error(f"Error in sales forecasting: {e}")
+        st.error(f"Error in forecasting: {str(e)}")
+        return None, None, None
+
+if menu == "Sales Forecast":
+    st.subheader("📈 Drug Sales Forecast")
+    
+    st.markdown("""
+    This module uses ARIMA (AutoRegressive Integrated Moving Average) time series modeling to forecast 
+    future drug sales based on historical data. ARIMA captures temporal patterns including:
+    - Trends (overall direction)
+    - Seasonality (recurring patterns)
+    - Cyclical components
+    
+    Upload a CSV file with 'Date' and 'Sales' columns or use the sample data.
+    """)
+    
+    # Add option to use sample data
+    use_sample = st.checkbox("Use sample data from database")
+    
+    if use_sample:
+        # Load sample data from SQLite database
+        conn = sqlite3.connect(DB_PATH)
+        sample_data = pd.read_sql("""
+            SELECT date(sale_date) as Date, SUM(total_price) as Sales
+            FROM sales
+            GROUP BY date(sale_date)
+            ORDER BY Date
+        """, conn)
+        conn.close()
+        
+        st.success("Using sample sales data from database")
+        
+        # Display sample data
+        st.subheader("Sample Data Preview")
+        st.dataframe(sample_data.head())
+        
+        # Allow selection of specific drug for analysis
+        conn = sqlite3.connect(DB_PATH)
+        drugs = pd.read_sql("SELECT id, name FROM drugs", conn)
+        conn.close()
+        
+        selected_drug = st.selectbox("Select specific drug (optional):", 
+                                    ["All Drugs"] + drugs['name'].tolist())
+        
+        if selected_drug != "All Drugs":
+            # Get the drug ID
+            drug_id = drugs[drugs['name'] == selected_drug]['id'].values[0]
+            
+            # Get sales data for the selected drug
+            conn = sqlite3.connect(DB_PATH)
+            sample_data = pd.read_sql(f"""
+                SELECT date(sale_date) as Date, SUM(total_price) as Sales
+                FROM sales
+                WHERE drug_id = {drug_id}
+                GROUP BY date(sale_date)
+                ORDER BY Date
+            """, conn)
+            conn.close()
+            
+            st.info(f"Showing sales data for {selected_drug}")
+        
+        data = sample_data
+    else:
+        # File uploader for custom data
+        uploaded = st.file_uploader("Upload Sales CSV with Date and Sales columns:", type=['csv'])
+        
+        if uploaded:
+            try:
+                data = pd.read_csv(uploaded)
+                st.success("Data uploaded successfully")
+            except Exception as e:
+                st.error(f"Error reading CSV: {str(e)}")
+                data = None
+        else:
+            data = None
+    
+    if data is not None:
+        # ARIMA model parameters
+        st.subheader("Model Parameters")
+        col1, col2, col3 = st.columns(3)
+        
+        with col1:
+            p = st.slider("AR order (p):", 0, 10, 5, 
+                         help="Number of lag observations included in the model")
+        with col2:
+            d = st.slider("Differencing order (d):", 0, 2, 1,
+                         help="Number of times to difference data to make stationary")
+        with col3:
+            q = st.slider("MA order (q):", 0, 10, 0,
+                         help="Size of the moving average window")
+        
+        # Forecast horizon
+        period = st.slider("Forecast horizon (days):", 5, 60, 15,
+                          help="Number of days to forecast into the future")
+        
+        # Run forecast
+        if st.button("Generate Forecast"):
+            with st.spinner("Generating forecast..."):
+                # Run ARIMA model
+                ts, forecast, conf_int = forecast_sales(data, period, order=(p, d, q))
+                
+                if ts is not None:
+                    # Visualize original time series
+                    st.subheader("Historical Sales Data")
+                    fig, ax = plt.subplots(figsize=(10, 6))
+                    ax.plot(ts.index, ts.values)
+                    ax.set_xlabel('Date')
+                    ax.set_ylabel('Sales')
+                    ax.set_title('Historical Sales')
+                    ax.grid(True)
+                    st.pyplot(fig)
+                    
+                    if forecast is not None:
+                        # Create a date range for the forecast period
+                        last_date = ts.index[-1]
+                        forecast_index = pd.date_range(start=last_date + pd.Timedelta(days=1), periods=period)
+                        
+                        # Plot forecast with confidence intervals
+                        st.subheader("Sales Forecast")
+                        fig, ax = plt.subplots(figsize=(10, 6))
+                        
+                        # Plot historical data
+                        ax.plot(ts.index, ts.values, label='Historical')
+                        
+                        # Plot forecast
+                        ax.plot(forecast_index, forecast.values, color='red', label='Forecast')
+                        
+                        # Plot confidence intervals
+                        if conf_int is not None:
+                            ax.fill_between(forecast_index, 
+                                          conf_int.iloc[:, 0].values, 
+                                          conf_int.iloc[:, 1].values,
+                                          color='pink', alpha=0.3, label='95% Confidence Interval')
+                        
+                        ax.set_xlabel('Date')
+                        ax.set_ylabel('Sales')
+                        ax.set_title('Sales Forecast with ARIMA')
+                        ax.legend()
+                        ax.grid(True)
+                        st.pyplot(fig)
+                        
+                        # Summary statistics
+                        st.subheader("Forecast Summary")
+                        col1, col2, col3 = st.columns(3)
+                        
+                        with col1:
+                            st.metric("Average Forecasted Sales", 
+                                    f"₹{forecast.mean():.2f}")
+                        
+                        with col2:
+                            forecast_trend = "Increasing" if forecast[-1] > forecast[0] else "Decreasing"
+                            st.metric("Forecast Trend", forecast_trend)
+                            
+                        with col3:
+                            percent_change = ((forecast[-1] - forecast[0]) / forecast[0]) * 100
+                            st.metric("Expected Change", f"{percent_change:.2f}%")
+                        
+                        # Export forecast button
+                        forecast_df = pd.DataFrame({
+                            'Date': forecast_index,
+                            'Forecasted_Sales': forecast.values,
+                            'Lower_CI': conf_int.iloc[:, 0].values,
+                            'Upper_CI': conf_int.iloc[:, 1].values
+                        })
+                        
+                        csv = forecast_df.to_csv(index=False)
+                        st.download_button(
+                            label="Download Forecast CSV",
+                            data=csv,
+                            file_name="sales_forecast.csv",
+                            mime="text/csv",
+                        )
+
+# --- Drug Price Prediction with Machine Learning ---
+def load_or_train_price_model(X, y):
+    """Load existing model or train a new one"""
+    model_path = os.path.join(MODEL_DIR, "drug_price_model.joblib")
+    
+    if os.path.exists(model_path):
+        # Load existing model
+        model = joblib.load(model_path)
+        logger.info("Loaded existing drug price prediction model")
+        return model
+    else:
+        # Train new model
+        logger.info("Training new drug price prediction model")
+        
+        # Create a pipeline with preprocessing and model
+        pipeline = Pipeline([
+            ('scaler', StandardScaler()),
+            ('model', RandomForestRegressor(n_estimators=100, random_state=42))
+        ])
+        
+        # Train the model
+        pipeline.fit(X, y)
+        
+        # Save the model
+        joblib.dump(pipeline, model_path)
+        logger.info("Saved new drug price prediction model")
+        
+        return pipeline
+
+if menu == "Drug Price ML Model":
+    st.subheader("💰 Drug Price Prediction (ML Model)")
+    
+    st.markdown("""
+    This module uses a Random Forest Regression model to predict drug prices based on:
+    - Chemical composition features
+    - Manufacturing complexity
+    - Treatment category
+    - Supply chain factors
+    
+    You can train the model on your own data or use our pre-trained model.
+    """)
+    
+    tab1, tab2 = st.tabs(["Predict Prices", "Train Model"])
+    
+    with tab1:
+        st.subheader("Predict Drug Price")
+        
+        # Create input form for drug features
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            form_complexity = st.slider("Manufacturing Complexity (1-10):", 1, 10, 5)
+            r_and_d_cost = st.number_input("R&D Cost (₹ Thousands):", 100, 5000, 1000)
+            patent_expiry = st.slider("Years Until Patent Expiry:", 0, 20, 10)
+            active_ingredients = st.slider("Number of Active Ingredients:", 1, 10, 2)
+            
+        with col2:
+            category = st.selectbox("Treatment Category:", [
+                "Cardiovascular", "Antibiotic", "Antidiabetic", "Respiratory", 
+                "Psychiatric", "Gastrointestinal", "Pain Management", "Hormonal"
+            ])
+            
+            category_map = {
+                "Cardiovascular": 0, "Antibiotic": 1, "Antidiabetic": 2, "Respiratory": 3,
+                "Psychiatric": 4, "Gastrointestinal": 5, "Pain Management": 6, "Hormonal": 7
+            }
+            
+            competition = st.slider("Market Competition (1-10):", 1, 10, 5)
+            market_size = st.number_input("Market Size (₹ Millions):", 1000, 100000, 10000)
+            regulatory_compliance = st.slider("Regulatory Compliance (1-10):", 1, 10, 5)
+            
+       

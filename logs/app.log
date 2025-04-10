@@ -1,0 +1,687 @@
+2025-04-10 17:16:06,894 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:16:06,951 - config - INFO - Loaded 100 drugs into database
+2025-04-10 17:16:06,965 - config - INFO - Generated sales data for 0 days
+2025-04-10 17:16:06,993 - config - INFO - Generated sales data for 30 days
+2025-04-10 17:16:07,024 - config - INFO - Generated sales data for 60 days
+2025-04-10 17:16:07,052 - config - INFO - Generated sales data for 90 days
+2025-04-10 17:16:07,078 - config - INFO - Generated sales data for 120 days
+2025-04-10 17:16:07,109 - config - INFO - Generated sales data for 150 days
+2025-04-10 17:16:07,138 - config - INFO - Generated sales data for 180 days
+2025-04-10 17:16:07,168 - config - INFO - Generated sales data for 210 days
+2025-04-10 17:16:07,206 - config - INFO - Generated sales data for 240 days
+2025-04-10 17:16:07,233 - config - INFO - Generated sales data for 270 days
+2025-04-10 17:16:07,265 - config - INFO - Generated sales data for 300 days
+2025-04-10 17:16:07,287 - config - INFO - Generated sales data for 330 days
+2025-04-10 17:16:07,321 - config - INFO - Generated sales data for 360 days
+2025-04-10 17:16:07,335 - config - INFO - Sample sales data generation complete
+2025-04-10 17:16:07,345 - config - INFO - Database initialized successfully
+2025-04-10 17:16:21,569 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:16:21,574 - config - INFO - Database initialized successfully
+2025-04-10 17:16:27,552 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:16:27,558 - config - INFO - Database initialized successfully
+2025-04-10 17:16:39,067 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:16:39,071 - config - INFO - Database initialized successfully
+2025-04-10 17:16:39,290 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:16:39,294 - config - INFO - Database initialized successfully
+2025-04-10 17:17:09,629 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:17:09,635 - config - INFO - Database initialized successfully
+2025-04-10 17:17:09,710 - config - INFO - Training new drug price prediction model
+2025-04-10 17:17:10,052 - config - INFO - Saved new drug price prediction model
+2025-04-10 17:17:10,116 - config - ERROR - Error evaluating model: The feature names should match those that were passed during fit.
+Feature names unseen at fit time:
+- category_Antibiotic
+- category_Antidiabetic
+- category_Cardiovascular
+- category_Dermatological
+- category_Gastrointestinal
+- ...
+Feature names seen at fit time, yet now missing:
+- Antibiotic
+- Antidiabetic
+- Cardiovascular
+- Dermatological
+- Gastrointestinal
+- ...
+
+2025-04-10 17:17:22,192 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:17:22,197 - config - INFO - Database initialized successfully
+2025-04-10 17:17:22,285 - config - INFO - Loaded existing drug price prediction model
+2025-04-10 17:17:22,339 - config - ERROR - Error evaluating model: The feature names should match those that were passed during fit.
+Feature names unseen at fit time:
+- category_Antibiotic
+- category_Antidiabetic
+- category_Cardiovascular
+- category_Dermatological
+- category_Gastrointestinal
+- ...
+Feature names seen at fit time, yet now missing:
+- Antibiotic
+- Antidiabetic
+- Cardiovascular
+- Dermatological
+- Gastrointestinal
+- ...
+
+2025-04-10 17:17:24,938 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:17:24,943 - config - INFO - Database initialized successfully
+2025-04-10 17:17:25,039 - config - INFO - Loaded existing drug price prediction model
+2025-04-10 17:17:25,050 - config - ERROR - Prediction error: The feature names should match those that were passed during fit.
+Feature names unseen at fit time:
+- active_ingredients
+- competition
+- complexity
+- dosage_units
+- patent_expiry
+- ...
+
+2025-04-10 17:17:25,123 - config - ERROR - Error evaluating model: The feature names should match those that were passed during fit.
+Feature names unseen at fit time:
+- category_Antibiotic
+- category_Antidiabetic
+- category_Cardiovascular
+- category_Dermatological
+- category_Gastrointestinal
+- ...
+Feature names seen at fit time, yet now missing:
+- Antibiotic
+- Antidiabetic
+- Cardiovascular
+- Dermatological
+- Gastrointestinal
+- ...
+
+2025-04-10 17:18:02,773 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:18:02,777 - config - INFO - Database initialized successfully
+2025-04-10 17:18:02,849 - config - INFO - Loaded existing drug price prediction model
+2025-04-10 17:18:02,917 - config - ERROR - Error evaluating model: The feature names should match those that were passed during fit.
+Feature names unseen at fit time:
+- category_Antibiotic
+- category_Antidiabetic
+- category_Cardiovascular
+- category_Dermatological
+- category_Gastrointestinal
+- ...
+Feature names seen at fit time, yet now missing:
+- Antibiotic
+- Antidiabetic
+- Cardiovascular
+- Dermatological
+- Gastrointestinal
+- ...
+
+2025-04-10 17:18:06,646 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:18:06,651 - config - INFO - Database initialized successfully
+2025-04-10 17:18:06,734 - config - INFO - Loaded existing drug price prediction model
+2025-04-10 17:18:06,784 - config - ERROR - Error evaluating model: The feature names should match those that were passed during fit.
+Feature names unseen at fit time:
+- category_Antibiotic
+- category_Antidiabetic
+- category_Cardiovascular
+- category_Dermatological
+- category_Gastrointestinal
+- ...
+Feature names seen at fit time, yet now missing:
+- Antibiotic
+- Antidiabetic
+- Cardiovascular
+- Dermatological
+- Gastrointestinal
+- ...
+
+2025-04-10 17:18:37,898 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:18:37,906 - config - INFO - Database initialized successfully
+2025-04-10 17:18:38,014 - config - INFO - Loaded existing drug price prediction model
+2025-04-10 17:18:38,064 - config - ERROR - Error evaluating model: The feature names should match those that were passed during fit.
+Feature names unseen at fit time:
+- category_Antibiotic
+- category_Antidiabetic
+- category_Cardiovascular
+- category_Dermatological
+- category_Gastrointestinal
+- ...
+Feature names seen at fit time, yet now missing:
+- Antibiotic
+- Antidiabetic
+- Cardiovascular
+- Dermatological
+- Gastrointestinal
+- ...
+
+2025-04-10 17:18:38,187 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:18:38,191 - config - INFO - Database initialized successfully
+2025-04-10 17:18:38,249 - config - INFO - Loaded existing drug price prediction model
+2025-04-10 17:18:38,296 - config - ERROR - Error evaluating model: The feature names should match those that were passed during fit.
+Feature names unseen at fit time:
+- category_Antibiotic
+- category_Antidiabetic
+- category_Cardiovascular
+- category_Dermatological
+- category_Gastrointestinal
+- ...
+Feature names seen at fit time, yet now missing:
+- Antibiotic
+- Antidiabetic
+- Cardiovascular
+- Dermatological
+- Gastrointestinal
+- ...
+
+2025-04-10 17:18:42,428 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:18:42,432 - config - INFO - Database initialized successfully
+2025-04-10 17:18:42,510 - config - INFO - Loaded existing drug price prediction model
+2025-04-10 17:18:42,562 - config - ERROR - Error evaluating model: The feature names should match those that were passed during fit.
+Feature names unseen at fit time:
+- category_Antibiotic
+- category_Antidiabetic
+- category_Cardiovascular
+- category_Dermatological
+- category_Gastrointestinal
+- ...
+Feature names seen at fit time, yet now missing:
+- Antibiotic
+- Antidiabetic
+- Cardiovascular
+- Dermatological
+- Gastrointestinal
+- ...
+
+2025-04-10 17:18:44,825 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:18:44,829 - config - INFO - Database initialized successfully
+2025-04-10 17:18:44,919 - config - INFO - Loaded existing drug price prediction model
+2025-04-10 17:18:44,968 - config - ERROR - Error evaluating model: The feature names should match those that were passed during fit.
+Feature names unseen at fit time:
+- category_Antibiotic
+- category_Antidiabetic
+- category_Cardiovascular
+- category_Dermatological
+- category_Gastrointestinal
+- ...
+Feature names seen at fit time, yet now missing:
+- Antibiotic
+- Antidiabetic
+- Cardiovascular
+- Dermatological
+- Gastrointestinal
+- ...
+
+2025-04-10 17:18:47,057 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:18:47,062 - config - INFO - Database initialized successfully
+2025-04-10 17:18:47,142 - config - INFO - Loaded existing drug price prediction model
+2025-04-10 17:18:47,199 - config - ERROR - Error evaluating model: The feature names should match those that were passed during fit.
+Feature names unseen at fit time:
+- category_Antibiotic
+- category_Antidiabetic
+- category_Cardiovascular
+- category_Dermatological
+- category_Gastrointestinal
+- ...
+Feature names seen at fit time, yet now missing:
+- Antibiotic
+- Antidiabetic
+- Cardiovascular
+- Dermatological
+- Gastrointestinal
+- ...
+
+2025-04-10 17:18:48,374 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:18:48,380 - config - INFO - Database initialized successfully
+2025-04-10 17:18:48,458 - config - INFO - Loaded existing drug price prediction model
+2025-04-10 17:18:48,467 - config - ERROR - Prediction error: The feature names should match those that were passed during fit.
+Feature names unseen at fit time:
+- active_ingredients
+- competition
+- complexity
+- dosage_units
+- patent_expiry
+- ...
+
+2025-04-10 17:18:48,533 - config - ERROR - Error evaluating model: The feature names should match those that were passed during fit.
+Feature names unseen at fit time:
+- category_Antibiotic
+- category_Antidiabetic
+- category_Cardiovascular
+- category_Dermatological
+- category_Gastrointestinal
+- ...
+Feature names seen at fit time, yet now missing:
+- Antibiotic
+- Antidiabetic
+- Cardiovascular
+- Dermatological
+- Gastrointestinal
+- ...
+
+2025-04-10 17:18:50,562 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:18:50,566 - config - INFO - Database initialized successfully
+2025-04-10 17:18:50,666 - config - INFO - Loaded existing drug price prediction model
+2025-04-10 17:18:50,717 - config - ERROR - Error evaluating model: The feature names should match those that were passed during fit.
+Feature names unseen at fit time:
+- category_Antibiotic
+- category_Antidiabetic
+- category_Cardiovascular
+- category_Dermatological
+- category_Gastrointestinal
+- ...
+Feature names seen at fit time, yet now missing:
+- Antibiotic
+- Antidiabetic
+- Cardiovascular
+- Dermatological
+- Gastrointestinal
+- ...
+
+2025-04-10 17:18:52,364 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:18:52,368 - config - INFO - Database initialized successfully
+2025-04-10 17:18:52,446 - config - INFO - Loaded existing drug price prediction model
+2025-04-10 17:18:52,456 - config - ERROR - Prediction error: The feature names should match those that were passed during fit.
+Feature names unseen at fit time:
+- active_ingredients
+- competition
+- complexity
+- dosage_units
+- patent_expiry
+- ...
+
+2025-04-10 17:18:52,516 - config - ERROR - Error evaluating model: The feature names should match those that were passed during fit.
+Feature names unseen at fit time:
+- category_Antibiotic
+- category_Antidiabetic
+- category_Cardiovascular
+- category_Dermatological
+- category_Gastrointestinal
+- ...
+Feature names seen at fit time, yet now missing:
+- Antibiotic
+- Antidiabetic
+- Cardiovascular
+- Dermatological
+- Gastrointestinal
+- ...
+
+2025-04-10 17:18:57,300 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:18:57,306 - config - INFO - Database initialized successfully
+2025-04-10 17:18:58,391 - config - ERROR - Query execution error: Execution failed on sql '
+                SELECT 
+                    d.id,
+                    d.name,
+                    d.category,
+                    d.manufacturer,
+                    d.stock as current_stock,
+                    COUNT(DISTINCT date(s.sale_date)) as sales_days,
+                    SUM(s.quantity) as total_sold,
+                    AVG(s.quantity) as avg_daily_sales,
+                    MAX(s.quantity) as max_daily_sales,
+                    MIN(CASE WHEN s.quantity > 0 THEN s.quantity ELSE NULL END) as min_daily_sales,
+                    STDDEV(s.quantity) as sales_volatility
+                FROM drugs d
+                LEFT JOIN sales s ON d.id = s.drug_id
+                GROUP BY d.id
+            ': no such function: STDDEV
+2025-04-10 17:18:58,392 - config - ERROR - Error in shortage prediction: Execution failed on sql '
+                SELECT 
+                    d.id,
+                    d.name,
+                    d.category,
+                    d.manufacturer,
+                    d.stock as current_stock,
+                    COUNT(DISTINCT date(s.sale_date)) as sales_days,
+                    SUM(s.quantity) as total_sold,
+                    AVG(s.quantity) as avg_daily_sales,
+                    MAX(s.quantity) as max_daily_sales,
+                    MIN(CASE WHEN s.quantity > 0 THEN s.quantity ELSE NULL END) as min_daily_sales,
+                    STDDEV(s.quantity) as sales_volatility
+                FROM drugs d
+                LEFT JOIN sales s ON d.id = s.drug_id
+                GROUP BY d.id
+            ': no such function: STDDEV
+2025-04-10 17:18:59,032 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:18:59,044 - config - INFO - Database initialized successfully
+2025-04-10 17:19:01,452 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:19:01,468 - config - INFO - Database initialized successfully
+2025-04-10 17:19:04,159 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:19:04,164 - config - INFO - Database initialized successfully
+2025-04-10 17:19:08,329 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:19:08,333 - config - INFO - Database initialized successfully
+2025-04-10 17:19:12,826 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:19:12,830 - config - INFO - Database initialized successfully
+2025-04-10 17:19:14,558 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:19:14,571 - config - INFO - Database initialized successfully
+2025-04-10 17:19:17,729 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:19:17,734 - config - INFO - Database initialized successfully
+2025-04-10 17:20:02,004 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:20:02,008 - config - INFO - Database initialized successfully
+2025-04-10 17:20:30,870 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:20:30,875 - config - INFO - Database initialized successfully
+2025-04-10 17:21:37,054 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:21:37,061 - config - INFO - Database initialized successfully
+2025-04-10 17:21:37,272 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:21:37,276 - config - INFO - Database initialized successfully
+2025-04-10 17:21:43,587 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:21:43,589 - config - INFO - Database initialized successfully
+2025-04-10 17:22:01,449 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:22:01,452 - config - INFO - Database initialized successfully
+2025-04-10 17:22:03,216 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:22:03,218 - config - INFO - Database initialized successfully
+2025-04-10 17:22:08,694 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:22:08,696 - config - INFO - Database initialized successfully
+2025-04-10 17:22:13,509 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:22:13,513 - config - INFO - Database initialized successfully
+2025-04-10 17:22:13,537 - config - INFO - Loaded existing drug price prediction model
+2025-04-10 17:22:13,555 - config - ERROR - Error evaluating model: The feature names should match those that were passed during fit.
+Feature names unseen at fit time:
+- category_Antibiotic
+- category_Antidiabetic
+- category_Cardiovascular
+- category_Dermatological
+- category_Gastrointestinal
+- ...
+Feature names seen at fit time, yet now missing:
+- Antibiotic
+- Antidiabetic
+- Cardiovascular
+- Dermatological
+- Gastrointestinal
+- ...
+
+2025-04-10 17:22:26,667 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:22:26,669 - config - INFO - Database initialized successfully
+2025-04-10 17:22:26,702 - config - INFO - Loaded existing drug price prediction model
+2025-04-10 17:22:26,729 - config - ERROR - Error evaluating model: The feature names should match those that were passed during fit.
+Feature names unseen at fit time:
+- category_Antibiotic
+- category_Antidiabetic
+- category_Cardiovascular
+- category_Dermatological
+- category_Gastrointestinal
+- ...
+Feature names seen at fit time, yet now missing:
+- Antibiotic
+- Antidiabetic
+- Cardiovascular
+- Dermatological
+- Gastrointestinal
+- ...
+
+2025-04-10 17:22:37,713 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:22:37,715 - config - INFO - Database initialized successfully
+2025-04-10 17:22:37,746 - config - INFO - Loaded existing drug price prediction model
+2025-04-10 17:22:37,763 - config - ERROR - Error evaluating model: The feature names should match those that were passed during fit.
+Feature names unseen at fit time:
+- category_Antibiotic
+- category_Antidiabetic
+- category_Cardiovascular
+- category_Dermatological
+- category_Gastrointestinal
+- ...
+Feature names seen at fit time, yet now missing:
+- Antibiotic
+- Antidiabetic
+- Cardiovascular
+- Dermatological
+- Gastrointestinal
+- ...
+
+2025-04-10 17:22:47,586 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:22:47,588 - config - INFO - Database initialized successfully
+2025-04-10 17:24:20,134 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:24:20,136 - config - INFO - Database initialized successfully
+2025-04-10 17:24:37,892 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:24:37,897 - config - INFO - Database initialized successfully
+2025-04-10 17:24:39,207 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:24:39,210 - config - INFO - Database initialized successfully
+2025-04-10 17:24:44,385 - config - ERROR - MongoDB connection error: localhost:27017: [WinError 10061] No connection could be made because the target machine actively refused it (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms), Timeout: 5.0s, Topology Description: <TopologyDescription id: 67f7b17fc44ba973f0afcf2d, topology_type: Unknown, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: [WinError 10061] No connection could be made because the target machine actively refused it (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>]>
+2025-04-10 17:24:49,295 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:24:49,300 - config - INFO - Database initialized successfully
+2025-04-10 17:24:54,442 - config - ERROR - MongoDB connection error: localhost:27017: [WinError 10061] No connection could be made because the target machine actively refused it (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms), Timeout: 5.0s, Topology Description: <TopologyDescription id: 67f7b189c44ba973f0afcf2e, topology_type: Unknown, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: [WinError 10061] No connection could be made because the target machine actively refused it (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>]>
+2025-04-10 17:25:07,066 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:25:07,069 - config - INFO - Database initialized successfully
+2025-04-10 17:25:19,448 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:25:19,449 - config - INFO - Database initialized successfully
+2025-04-10 17:25:31,338 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:25:31,341 - config - INFO - Database initialized successfully
+2025-04-10 17:25:40,124 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:25:40,126 - config - INFO - Database initialized successfully
+2025-04-10 17:25:50,790 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:25:50,792 - config - INFO - Database initialized successfully
+2025-04-10 17:25:53,569 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:25:53,571 - config - INFO - Database initialized successfully
+2025-04-10 17:25:57,776 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:25:57,778 - config - INFO - Database initialized successfully
+2025-04-10 17:26:11,609 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:26:11,612 - config - INFO - Database initialized successfully
+2025-04-10 17:26:20,320 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:26:20,322 - config - INFO - Database initialized successfully
+2025-04-10 17:26:40,390 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:26:40,392 - config - INFO - Database initialized successfully
+2025-04-10 17:26:40,666 - config - ERROR - Query execution error: Execution failed on sql '
+                SELECT 
+                    d.id,
+                    d.name,
+                    d.category,
+                    d.manufacturer,
+                    d.stock as current_stock,
+                    COUNT(DISTINCT date(s.sale_date)) as sales_days,
+                    SUM(s.quantity) as total_sold,
+                    AVG(s.quantity) as avg_daily_sales,
+                    MAX(s.quantity) as max_daily_sales,
+                    MIN(CASE WHEN s.quantity > 0 THEN s.quantity ELSE NULL END) as min_daily_sales,
+                    STDDEV(s.quantity) as sales_volatility
+                FROM drugs d
+                LEFT JOIN sales s ON d.id = s.drug_id
+                GROUP BY d.id
+            ': no such function: STDDEV
+2025-04-10 17:26:40,667 - config - ERROR - Error in shortage prediction: Execution failed on sql '
+                SELECT 
+                    d.id,
+                    d.name,
+                    d.category,
+                    d.manufacturer,
+                    d.stock as current_stock,
+                    COUNT(DISTINCT date(s.sale_date)) as sales_days,
+                    SUM(s.quantity) as total_sold,
+                    AVG(s.quantity) as avg_daily_sales,
+                    MAX(s.quantity) as max_daily_sales,
+                    MIN(CASE WHEN s.quantity > 0 THEN s.quantity ELSE NULL END) as min_daily_sales,
+                    STDDEV(s.quantity) as sales_volatility
+                FROM drugs d
+                LEFT JOIN sales s ON d.id = s.drug_id
+                GROUP BY d.id
+            ': no such function: STDDEV
+2025-04-10 17:26:59,488 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:26:59,493 - config - INFO - Database initialized successfully
+2025-04-10 17:26:59,518 - config - INFO - Loaded existing drug price prediction model
+2025-04-10 17:26:59,536 - config - ERROR - Error evaluating model: The feature names should match those that were passed during fit.
+Feature names unseen at fit time:
+- category_Antibiotic
+- category_Antidiabetic
+- category_Cardiovascular
+- category_Dermatological
+- category_Gastrointestinal
+- ...
+Feature names seen at fit time, yet now missing:
+- Antibiotic
+- Antidiabetic
+- Cardiovascular
+- Dermatological
+- Gastrointestinal
+- ...
+
+2025-04-10 17:27:12,650 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:27:12,655 - config - INFO - Database initialized successfully
+2025-04-10 17:27:16,184 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:27:16,186 - config - INFO - Database initialized successfully
+2025-04-10 17:27:28,342 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:27:28,344 - config - INFO - Database initialized successfully
+2025-04-10 17:27:31,389 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:27:31,392 - config - INFO - Database initialized successfully
+2025-04-10 17:27:48,744 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 17:27:48,745 - config - INFO - Database initialized successfully
+2025-04-10 21:04:33,265 - config - ERROR - Error initializing real-time data: Execution failed on sql '
+            SELECT id, generic_name, brand_name, price
+            FROM drugs
+        ': no such column: generic_name
+2025-04-10 21:04:33,268 - config - ERROR - Error initializing real-time data: Execution failed on sql '
+            SELECT id, generic_name, brand_name, price
+            FROM drugs
+        ': no such column: generic_name
+2025-04-10 21:04:33,269 - config - INFO - Starting background update worker
+2025-04-10 21:04:33,269 - config - INFO - Background updates started
+2025-04-10 21:04:35,146 - config - INFO - Loaded 100 records from D:\PROJECTS N\Pharmacy prediction model\data\sample_100_drugs.csv
+2025-04-10 21:04:35,148 - config - INFO - Database initialized successfully
+2025-04-10 21:04:40,273 - config - ERROR - MongoDB server selection timeout (attempt 1/3)
+2025-04-10 21:04:40,274 - config - INFO - Retrying in 1 seconds...
+2025-04-10 21:04:41,850 - config - INFO - Generating comprehensive drug database with 1000 entries...
+2025-04-10 21:04:43,492 - config - INFO - Drug database saved to D:\PROJECTS N\Pharmacy prediction model\data\comprehensive_drugs.csv
+2025-04-10 21:04:43,504 - config - INFO - Database initialized successfully
+2025-04-10 21:04:43,571 - config - INFO - Loaded comprehensive drug database with 1000 entries
+2025-04-10 21:04:43,576 - config - INFO - Database initialized successfully
+2025-04-10 21:04:46,380 - config - ERROR - MongoDB server selection timeout (attempt 2/3)
+2025-04-10 21:04:46,380 - config - INFO - Retrying in 2 seconds...
+2025-04-10 21:04:48,713 - config - ERROR - MongoDB server selection timeout (attempt 1/3)
+2025-04-10 21:04:48,714 - config - INFO - Retrying in 1 seconds...
+2025-04-10 21:04:49,866 - config - INFO - Loaded comprehensive drug database with 1000 entries
+2025-04-10 21:04:49,871 - config - INFO - Database initialized successfully
+2025-04-10 21:04:53,505 - config - ERROR - MongoDB server selection timeout (attempt 3/3)
+2025-04-10 21:04:53,506 - config - ERROR - Failed to connect to MongoDB after multiple attempts
+2025-04-10 21:04:54,816 - config - ERROR - MongoDB server selection timeout (attempt 2/3)
+2025-04-10 21:04:54,818 - config - INFO - Retrying in 2 seconds...
+2025-04-10 21:04:55,016 - config - ERROR - MongoDB server selection timeout (attempt 1/3)
+2025-04-10 21:04:55,018 - config - INFO - Retrying in 1 seconds...
+2025-04-10 21:04:55,554 - config - INFO - Loaded comprehensive drug database with 1000 entries
+2025-04-10 21:04:55,560 - config - INFO - Database initialized successfully
+2025-04-10 21:04:57,640 - config - INFO - Loaded comprehensive drug database with 1000 entries
+2025-04-10 21:04:57,645 - config - INFO - Database initialized successfully
+2025-04-10 21:05:01,285 - config - ERROR - MongoDB server selection timeout (attempt 2/3)
+2025-04-10 21:05:01,286 - config - INFO - Retrying in 2 seconds...
+2025-04-10 21:05:01,982 - config - ERROR - MongoDB server selection timeout (attempt 3/3)
+2025-04-10 21:05:01,983 - config - ERROR - Failed to connect to MongoDB after multiple attempts
+2025-04-10 21:05:08,384 - config - ERROR - MongoDB server selection timeout (attempt 3/3)
+2025-04-10 21:05:08,386 - config - ERROR - Failed to connect to MongoDB after multiple attempts
+2025-04-10 21:05:30,168 - config - INFO - Loaded comprehensive drug database with 1000 entries
+2025-04-10 21:05:30,172 - config - INFO - Database initialized successfully
+2025-04-10 21:05:57,801 - config - INFO - Loaded comprehensive drug database with 1000 entries
+2025-04-10 21:05:57,804 - config - INFO - Database initialized successfully
+2025-04-10 21:06:06,832 - config - INFO - Loaded comprehensive drug database with 1000 entries
+2025-04-10 21:06:06,836 - config - INFO - Database initialized successfully
+2025-04-10 21:06:12,067 - config - INFO - Loaded existing drug price prediction model
+2025-04-10 21:06:12,128 - config - ERROR - Error evaluating model: The feature names should match those that were passed during fit.
+Feature names unseen at fit time:
+- category_Antibiotic
+- category_Antidiabetic
+- category_Cardiovascular
+- category_Dermatological
+- category_Gastrointestinal
+- ...
+Feature names seen at fit time, yet now missing:
+- Antibiotic
+- Antidiabetic
+- Cardiovascular
+- Dermatological
+- Gastrointestinal
+- ...
+
+2025-04-10 21:06:26,405 - config - INFO - Loaded comprehensive drug database with 1000 entries
+2025-04-10 21:06:26,409 - config - INFO - Database initialized successfully
+2025-04-10 21:06:31,743 - config - INFO - Loaded existing drug price prediction model
+2025-04-10 21:06:31,796 - config - ERROR - Error evaluating model: The feature names should match those that were passed during fit.
+Feature names unseen at fit time:
+- category_Antibiotic
+- category_Antidiabetic
+- category_Cardiovascular
+- category_Dermatological
+- category_Gastrointestinal
+- ...
+Feature names seen at fit time, yet now missing:
+- Antibiotic
+- Antidiabetic
+- Cardiovascular
+- Dermatological
+- Gastrointestinal
+- ...
+
+2025-04-10 21:07:46,326 - config - INFO - Loaded comprehensive drug database with 1000 entries
+2025-04-10 21:07:46,329 - config - INFO - Database initialized successfully
+2025-04-10 21:07:52,001 - config - ERROR - Query execution error (attempt 1/3): Execution failed on sql '
+                SELECT 
+                    d.id,
+                    d.name,
+                    d.category,
+                    d.manufacturer,
+                    d.stock as current_stock,
+                    COUNT(DISTINCT date(s.sale_date)) as sales_days,
+                    SUM(s.quantity) as total_sold,
+                    AVG(s.quantity) as avg_daily_sales,
+                    MAX(s.quantity) as max_daily_sales,
+                    MIN(CASE WHEN s.quantity > 0 THEN s.quantity ELSE NULL END) as min_daily_sales,
+                    STDDEV(s.quantity) as sales_volatility
+                FROM drugs d
+                LEFT JOIN sales s ON d.id = s.drug_id
+                GROUP BY d.id
+            ': no such function: STDDEV
+2025-04-10 21:07:52,002 - config - INFO - Retrying in 1 seconds...
+2025-04-10 21:07:53,005 - config - ERROR - Query execution error (attempt 2/3): Execution failed on sql '
+                SELECT 
+                    d.id,
+                    d.name,
+                    d.category,
+                    d.manufacturer,
+                    d.stock as current_stock,
+                    COUNT(DISTINCT date(s.sale_date)) as sales_days,
+                    SUM(s.quantity) as total_sold,
+                    AVG(s.quantity) as avg_daily_sales,
+                    MAX(s.quantity) as max_daily_sales,
+                    MIN(CASE WHEN s.quantity > 0 THEN s.quantity ELSE NULL END) as min_daily_sales,
+                    STDDEV(s.quantity) as sales_volatility
+                FROM drugs d
+                LEFT JOIN sales s ON d.id = s.drug_id
+                GROUP BY d.id
+            ': no such function: STDDEV
+2025-04-10 21:07:53,006 - config - INFO - Retrying in 2 seconds...
+2025-04-10 21:07:53,824 - config - INFO - Loaded comprehensive drug database with 1000 entries
+2025-04-10 21:07:53,826 - config - INFO - Database initialized successfully
+2025-04-10 21:07:55,008 - config - ERROR - Query execution error (attempt 3/3): Execution failed on sql '
+                SELECT 
+                    d.id,
+                    d.name,
+                    d.category,
+                    d.manufacturer,
+                    d.stock as current_stock,
+                    COUNT(DISTINCT date(s.sale_date)) as sales_days,
+                    SUM(s.quantity) as total_sold,
+                    AVG(s.quantity) as avg_daily_sales,
+                    MAX(s.quantity) as max_daily_sales,
+                    MIN(CASE WHEN s.quantity > 0 THEN s.quantity ELSE NULL END) as min_daily_sales,
+                    STDDEV(s.quantity) as sales_volatility
+                FROM drugs d
+                LEFT JOIN sales s ON d.id = s.drug_id
+                GROUP BY d.id
+            ': no such function: STDDEV
+2025-04-10 21:07:55,009 - config - ERROR - Error in shortage prediction: Failed to execute query after 3 attempts: Execution failed on sql '
+                SELECT 
+                    d.id,
+                    d.name,
+                    d.category,
+                    d.manufacturer,
+                    d.stock as current_stock,
+                    COUNT(DISTINCT date(s.sale_date)) as sales_days,
+                    SUM(s.quantity) as total_sold,
+                    AVG(s.quantity) as avg_daily_sales,
+                    MAX(s.quantity) as max_daily_sales,
+                    MIN(CASE WHEN s.quantity > 0 THEN s.quantity ELSE NULL END) as min_daily_sales,
+                    STDDEV(s.quantity) as sales_volatility
+                FROM drugs d
+                LEFT JOIN sales s ON d.id = s.drug_id
+                GROUP BY d.id
+            ': no such function: STDDEV
+2025-04-10 21:16:14,189 - config - INFO - Loaded comprehensive drug database with 1000 entries
+2025-04-10 21:16:14,195 - config - INFO - Database initialized successfully
+2025-04-10 22:11:06,144 - config - INFO - Loaded comprehensive drug database with 1000 entries
+2025-04-10 22:11:06,149 - config - INFO - Database initialized successfully
+2025-04-10 22:11:23,230 - config - INFO - Loaded comprehensive drug database with 1000 entries
+2025-04-10 22:11:23,234 - config - INFO - Database initialized successfully
+2025-04-10 22:11:26,818 - config - INFO - Loaded comprehensive drug database with 1000 entries
+2025-04-10 22:11:26,821 - config - INFO - Database initialized successfully
+2025-04-10 22:11:28,762 - config - INFO - Loaded comprehensive drug database with 1000 entries
+2025-04-10 22:11:28,766 - config - INFO - Database initialized successfully
+2025-04-10 22:11:40,227 - config - INFO - Loaded comprehensive drug database with 1000 entries
+2025-04-10 22:11:40,232 - config - INFO - Database initialized successfully
